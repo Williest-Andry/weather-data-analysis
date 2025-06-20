@@ -1,8 +1,8 @@
 import requests
-import datetime
 import os
 import pandas as pd
 import logging
+
 
 def extract_city_weather(city, date, api_key):
     try:
@@ -28,12 +28,16 @@ def extract_city_weather(city, date, api_key):
             "sunset": data["sys"]["sunset"],
             "snow": data.get("rain", {}).get("1h", 0),
             "rain": data.get("snow", {}).get("1h", 0),
-            "cloud": data["clouds"]["all"]
+            "cloud": data["clouds"]["all"],
         }
 
-        raw_data_dir = f"weather-data-analysis/data/raw/{date.strftime('%Y-%m-%d')}/"
+        raw_data_dir = f"data/raw/{date.strftime('%Y-%m-%d')}/"
         os.makedirs(os.path.dirname(raw_data_dir), exist_ok=True)
 
-        pd.DataFrame([weather_data]).to_csv(f"{raw_data_dir}/weather_{city}.csv", index=False)
+        pd.DataFrame([weather_data]).to_csv(
+            f"{raw_data_dir}/weather_{city}.csv", index=False
+        )
+    except requests.exceptions.RequestException as e:
+        logging.error(f"API REQUEST ERROR: {e}")
     except Exception as e:
-       logging.error(f"UNEXPECTED ERROR WHEN EXTRACT: {e}") 
+        logging.error(f"UNEXPECTED ERROR WHEN EXTRACT DATA: {e}")

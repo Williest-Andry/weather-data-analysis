@@ -1,0 +1,11 @@
+{"timestamp":"2025-06-20T09:42:31.990993","level":"info","event":"DAG bundles loaded: dags-folder, example_dags","logger":"airflow.dag_processing.bundles.manager.DagBundlesManager"}
+{"timestamp":"2025-06-20T09:42:31.999320","level":"info","event":"Filling up the DagBag from /home/williest/weather-data-analysis/dags/weather_etl.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2025-06-20T09:42:32.700774","level":"info","event":"Secrets backends loaded for worker","count":1,"backend_classes":["EnvironmentVariablesBackend"],"logger":"supervisor"}
+{"timestamp":"2025-06-20T09:42:34.115279Z","level":"info","event":"Task instance is in running state","chan":"stdout","logger":"task"}
+{"timestamp":"2025-06-20T09:42:34.115583Z","level":"info","event":" Previous state of the Task instance: TaskInstanceState.QUEUED","chan":"stdout","logger":"task"}
+{"timestamp":"2025-06-20T09:42:34.115709Z","level":"info","event":"Current task name:extract_barcelone","chan":"stdout","logger":"task"}
+{"timestamp":"2025-06-20T09:42:34.115826Z","level":"info","event":"Dag name:weather_etl_pipeline","chan":"stdout","logger":"task"}
+{"timestamp":"2025-06-20T09:42:35.772604","level":"info","event":"Done. Returned value was: None","logger":"airflow.task.operators.airflow.providers.standard.operators.python.PythonOperator"}
+{"timestamp":"2025-06-20T09:42:38.676050Z","level":"info","event":"Task instance in success state","chan":"stdout","logger":"task"}
+{"timestamp":"2025-06-20T09:42:38.676295Z","level":"info","event":" Previous state of the Task instance: TaskInstanceState.RUNNING","chan":"stdout","logger":"task"}
+{"timestamp":"2025-06-20T09:42:38.676481Z","level":"info","event":"Task operator:<Task(PythonOperator): extract_barcelone>","chan":"stdout","logger":"task"}
