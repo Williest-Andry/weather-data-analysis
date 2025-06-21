@@ -26,6 +26,7 @@ def extract_city_weather(city, date, api_key):
             "description": data["weather"][0]["description"],
             "sunrise": data["sys"]["sunrise"],
             "sunset": data["sys"]["sunset"],
+            "timezone": data["timezone"],
             "snow": data.get("rain", {}).get("1h", 0),
             "rain": data.get("snow", {}).get("1h", 0),
             "cloud": data["clouds"]["all"],
