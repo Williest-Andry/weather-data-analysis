@@ -31,7 +31,7 @@ def extract_city_weather(city, date, api_key):
             "cloud": data["clouds"]["all"],
         }
 
-        raw_data_dir = f"data/raw/{date.strftime('%Y-%m-%d')}/"
+        raw_data_dir = f"data/daily_raw/{date.strftime('%Y-%m-%d')}/"
         os.makedirs(os.path.dirname(raw_data_dir), exist_ok=True)
 
         pd.DataFrame([weather_data]).to_csv(
