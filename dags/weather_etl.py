@@ -5,6 +5,7 @@ import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from scripts.extract_weather import extract_city_weather
+from scripts.merge_weather import merge_weather
 
 CITIES = ["paris", "tokyo", "barcelone", "montréal", "marrakesh"]
 
@@ -30,3 +31,11 @@ with DAG(
         )
         for city in CITIES
     ]
+
+    merge_task = PythonOperator(
+        task_id=f"merge_weather",
+        python_callable=merge_weather,
+        op_args=["{{ds}}"]
+    )
+
+    extract_tasks >> merge_task
