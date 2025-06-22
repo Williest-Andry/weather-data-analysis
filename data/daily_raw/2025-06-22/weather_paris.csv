@@ -1,2 +1,2 @@
 city_id,city,extract_date,temperature,humidity,wind,description,sunrise,sunset,timezone,snow,rain,cloud
-2988507,paris,2025-06-22 10:57:02.829649,23.93,63,5.14,clear sky,1750564033,1750622276,7200,0,0,0
+2988507,paris,2025-06-22 11:22:04.793435,23.6,64,5.14,clear sky,1750564033,1750622276,7200,0,0,0

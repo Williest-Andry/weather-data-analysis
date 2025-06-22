@@ -3,7 +3,7 @@ import os
 import datetime
 
 def merge_weather(date):
-    global_weather_dir = f"data/daily-processed/global_weather.csv"
+    global_weather_dir = f"data/global_processed/global_weather.csv"
     os.makedirs(os.path.dirname(global_weather_dir), exist_ok=True)
 
     if os.path.exists(global_weather_dir):
@@ -21,5 +21,9 @@ def merge_weather(date):
         raise ValueError(f"NEW VALUES NOT FOUND FOR THE DATE: {date}")
 
     updated_df = pd.concat([global_df] + new_data, ignore_index=True)
+    updated_df = updated_df.drop_duplicates(
+        subset=['city_id', 'extract_date'],
+        keep='last'
+    )
 
     updated_df.to_csv(global_weather_dir, index=False) 
