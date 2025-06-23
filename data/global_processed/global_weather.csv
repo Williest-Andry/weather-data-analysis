@@ -1,4 +1,4 @@
-city_id,city,extract_date,temperature,humidity,wind,description,sunrise,sunset,timezone,snow,rain,cloud
+city_id,city,extract_date,temperature,humidity,wind,description,sunrise,sunset,timezone_hour,snow,rain,cloud
 2542997,marrakesh,2025-06-21 07:18:13.265819,21.04,78,4.12,scattered clouds,1750483646,1750534811,3600,0,0,40
 1850144,tokyo,2025-06-21 07:17:42.508459,31.01,50,1.79,overcast clouds,1750447538,1750500013,32400,0,0,100
 6077243,montréal,2025-06-21 07:18:12.965793,15.18,70,2.41,clear sky,1750496737,1750553203,-14400,0,0,0
@@ -14,3 +14,8 @@ city_id,city,extract_date,temperature,humidity,wind,description,sunrise,sunset,t
 6077243,montréal,2025-06-22 11:22:04.919284,21.18,88,4.12,overcast clouds,1750583151,1750639613,-14400,0,0,100
 2988507,paris,2025-06-22 11:22:04.793435,23.6,64,5.14,clear sky,1750564033,1750622276,7200,0,0,0
 3128760,barcelone,2025-06-22 11:22:04.912358,29.05,53,2.24,clear sky,1750565895,1750620505,7200,0,0,0
+2542997,marrakesh,2025-06-23 09:45:51.523648,19.04,82,4.63,scattered clouds,09:27:52,23:40:33,1,0,0,40
+1850144,tokyo,2025-06-23 09:45:47.959295,30.53,61,9.26,broken clouds,07:26:05,22:00:35,9,0,0,75
+6077243,montréal,2025-06-23 09:45:51.144213,20.93,85,1.54,broken clouds,08:06:07,23:47:01,-4,0,0,75
+2988507,paris,2025-06-23 09:45:49.360317,18.46,78,5.14,scattered clouds,08:47:29,00:58:04,2,0,0,40
+3128760,barcelone,2025-06-23 09:45:50.156238,27.18,51,0.51,clear sky,09:18:30,00:28:34,2,0,0,0
