@@ -1,6 +1,12 @@
 import pandas as pd
 import os
 from datetime import datetime
+import sys
+import os
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+from scripts.convert_date import to_local_hour
+from scripts.convert_date import timezone_to_hour
 
 
 def merge_weather(date):
@@ -18,17 +24,15 @@ def merge_weather(date):
     for csv_file in os.listdir(daily_raw_dir):
         if csv_file.startswith("weather_") and csv_file.endswith(".csv"):
             file_df = pd.read_csv(f"{daily_raw_dir}/{csv_file}")
+
             city_timezone = file_df.at[0, "timezone"]
-            file_df.at[0, "sunrise"] = datetime.fromtimestamp(
-                file_df.at[0, "sunrise"] + city_timezone
-            ).strftime("%H:%M:%S")
-            file_df.at[0, "sunset"] = datetime.fromtimestamp(
-                file_df.at[0, "sunset"] + city_timezone
-            ).strftime("%H:%M:%S")
+            sunrise_timestamp = file_df.at[0, "sunrise"]
+            sunset_timestamp = file_df.at[0, "sunset"]
+            file_df.at[0, "sunrise"] = to_local_hour(sunrise_timestamp, city_timezone)
+            file_df.at[0, "sunset"] = to_local_hour(sunset_timestamp, city_timezone)
 
             file_df.rename(columns={"timezone": "timezone_hour"}, inplace=True)
-            city_timezone_hour = city_timezone / 3600
-            file_df.at[0, "timezone_hour"] = city_timezone_hour
+            file_df.at[0, "timezone_hour"] = timezone_to_hour(city_timezone)
 
             new_data.append(file_df)
 
