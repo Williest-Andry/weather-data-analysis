@@ -8,3 +8,4 @@ scripts/__pycache__/
 airflow.db-shm
 airflow.db-wal
 scripts/test.py
+scripts/column_format_convert.py
