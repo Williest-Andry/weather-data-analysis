@@ -4,12 +4,6 @@ from io import StringIO
 
 
 def add_city_id_and_city_name(file_path, corresponding_city):
-    history_data_processed_path = "data/history_processed/global_history_weather.csv"
-    if os.path.exists(history_data_processed_path):
-        raise OSError(
-            f"ERROR: the file in '{history_data_processed_path}' already exists"
-        )
-
     with open(file_path, "r") as f:
         lines = f.readlines()
 

@@ -5,3 +5,6 @@ def to_local_hour(date_in_second, timezone_in_second):
 
 def timezone_to_hour(timezone_in_second):
     return int(timezone_in_second / 3600)
+
+def format_iso_to_hour(date_in_iso_format):
+    return datetime.fromisoformat(date_in_iso_format).time()
