@@ -34,6 +34,8 @@ def merge_weather(date):
             file_df.rename(columns={"timezone": "timezone_hour"}, inplace=True)
             file_df.at[0, "timezone_hour"] = timezone_to_hour(city_timezone)
 
+            file_df.drop(columns=["description"], inplace=True)
+
             new_data.append(file_df)
 
     if not new_data:
