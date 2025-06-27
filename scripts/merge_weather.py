@@ -36,6 +36,8 @@ def merge_weather(date):
 
             file_df.drop(columns=["description"], inplace=True)
 
+            file_df.at[0, "extract_date"] = datetime.strptime(str(file_df.at[0, "extract_date"]), "%Y-%m-%d %H:%M:%S.%f").date()
+
             new_data.append(file_df)
 
     if not new_data:

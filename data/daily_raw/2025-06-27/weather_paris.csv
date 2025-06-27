@@ -1,0 +1,2 @@
+city_id,city,extract_date,temperature,humidity,wind,description,sunrise,sunset,timezone,snow,rain,cloud
+2988507,paris,2025-06-27 06:54:24.275345,20.05,88,3.09,overcast clouds,1750996139,1751054289,7200,0,0,100

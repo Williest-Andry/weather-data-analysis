@@ -27,7 +27,7 @@ with DAG(
         PythonOperator(
             task_id=f"extract_{city.lower()}",
             python_callable=extract_city_weather,
-            op_args=[city, datetime.datetime.now(), "{{var.value.WEATHER_API_KEY}}"],
+            op_args=[city, "{{ds}}", "{{var.value.WEATHER_API_KEY}}"],
         )
         for city in CITIES
     ]
