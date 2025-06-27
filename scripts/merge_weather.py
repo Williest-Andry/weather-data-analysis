@@ -36,7 +36,27 @@ def merge_weather(date):
 
             file_df.drop(columns=["description"], inplace=True)
 
-            file_df.at[0, "extract_date"] = datetime.strptime(str(file_df.at[0, "extract_date"]), "%Y-%m-%d %H:%M:%S.%f").date()
+            file_df.at[0, "extract_date"] = datetime.strptime(
+                str(file_df.at[0, "extract_date"]), "%Y-%m-%d %H:%M:%S.%f"
+            ).date()
+
+            file_df.rename(columns={"snow": "snowfall"}, inplace=True)
+
+            file_df = file_df[
+                [
+                    "city_id",
+                    "city",
+                    "extract_date",
+                    "temperature",
+                    "sunrise",
+                    "sunset",
+                    "humidity",
+                    "wind",
+                    "rain",
+                    "cloud",
+                    "snowfall",
+                ]
+            ]
 
             new_data.append(file_df)
 
