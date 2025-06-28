@@ -2,7 +2,7 @@ import requests
 import os
 import pandas as pd
 import logging
-
+from datetime import datetime
 
 def extract_city_weather(city, date, api_key):
     try:
@@ -16,10 +16,12 @@ def extract_city_weather(city, date, api_key):
         response.raise_for_status()
 
         data = response.json()
+
+        actual_date = datetime.strptime(str(date), "%Y-%m-%d")
         weather_data = {
             "city_id": data["id"],
             "city": city,
-            "extract_date": date,
+            "extract_date": actual_date,
             "temperature": data["main"]["temp"],
             "humidity": data["main"]["humidity"],
             "wind": data["wind"]["speed"],
@@ -32,7 +34,7 @@ def extract_city_weather(city, date, api_key):
             "cloud": data["clouds"]["all"],
         }
 
-        raw_data_dir = f"data/daily_raw/{date.strftime('%Y-%m-%d')}/"
+        raw_data_dir = f"data/daily_raw/{actual_date.date()}/"
         os.makedirs(os.path.dirname(raw_data_dir), exist_ok=True)
 
         pd.DataFrame([weather_data]).to_csv(

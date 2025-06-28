@@ -1,6 +1,5 @@
 import pandas as pd
 
-
 def merge_history_and_current_weather():
     history_data_dir = "data/history_processed/global_history_weather.csv"
     global_data_processed_dir = "data/global_processed/global_weather.csv"
@@ -19,8 +18,8 @@ def merge_history_and_current_weather():
         columns={
             "city": "city_name",
             "temperature": "temperature(°C)",
-            "sunrise": "sunrise_hour",
-            "sunset": "sunset_hour",
+            "sunrise": "sunrise_local_hour",
+            "sunset": "sunset_local_hour",
             "humitidy":"humidity(%)",
             "wind": "wind(m/s)",
             "rain": "rain(mm)",
@@ -29,7 +28,7 @@ def merge_history_and_current_weather():
         },
         inplace=True,
     )
-
+    
     updated_global_processed_df.to_csv(global_data_processed_dir, index=False)
 
 

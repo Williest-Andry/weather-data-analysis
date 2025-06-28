@@ -19,30 +19,5 @@ def add_city_id_and_city_name(file_path, corresponding_city):
     )
 
     global_history_df_with_city_id.drop(columns=["location_id"], inplace=True)
+
     return global_history_df_with_city_id
-
-
-# paris_barcelone_tokyo = pd.DataFrame(
-#     {
-#         "location_id": [0, 1, 2],
-#         "city_id": [2988507, 3128760, 1850144],
-#         "city": ["paris", "barcelone", "tokyo"],
-#     }
-# )
-# add_city_id_and_city_name(
-#     "data/history_raw/2020-05-01 to 2025-06-19/weather_montréal_marrakech.csv",
-#     paris_barcelone_tokyo
-# )
-
-
-# montreal_marrakesh = pd.DataFrame(
-#     {
-#         "location_id": [0, 1],
-#         "city_id": [6077243, 2542997],
-#         "city": ["montréal", "marrakesh"],
-#     }
-# )
-# add_city_id_and_city_name(
-#     "data/history_raw/2020-05-01 to 2025-06-19/weather_montréal_marrakech.csv",
-#     montreal_marrakesh
-# )

@@ -31,30 +31,45 @@ def merge_weather(date):
             file_df.at[0, "sunrise"] = to_local_hour(sunrise_timestamp, city_timezone)
             file_df.at[0, "sunset"] = to_local_hour(sunset_timestamp, city_timezone)
 
-            file_df.rename(columns={"timezone": "timezone_hour"}, inplace=True)
+            file_df.rename(
+                columns={
+                    "timezone": "timezone_hour",
+                    "snow": "snowfall",
+                    "city": "city_name",
+                    "temperature": "temperature(°C)",
+                    "sunrise": "sunrise_local_hour",
+                    "sunset": "sunset_local_hour",
+                    "humidity": "humidity(%)",
+                    "wind": "wind(m/s)",
+                    "rain": "rain(mm)",
+                    "cloud": "cloud(%)",
+                    "snow": "snowfall(mm)",
+                },
+                inplace=True,
+            )
             file_df.at[0, "timezone_hour"] = timezone_to_hour(city_timezone)
 
             file_df.drop(columns=["description"], inplace=True)
 
             file_df.at[0, "extract_date"] = datetime.strptime(
-                str(file_df.at[0, "extract_date"]), "%Y-%m-%d %H:%M:%S.%f"
+                str(file_df.at[0, "extract_date"]), "%Y-%m-%d"
             ).date()
 
-            file_df.rename(columns={"snow": "snowfall"}, inplace=True)
+            file_df.rename(columns={}, inplace=True)
 
             file_df = file_df[
                 [
                     "city_id",
-                    "city",
+                    "city_name",
                     "extract_date",
-                    "temperature",
-                    "sunrise",
-                    "sunset",
-                    "humidity",
-                    "wind",
-                    "rain",
-                    "cloud",
-                    "snowfall",
+                    "temperature(°C)",
+                    "sunrise_local_hour",
+                    "sunset_local_hour",
+                    "humidity(%)",
+                    "wind(m/s)",
+                    "rain(mm)",
+                    "cloud(%)",
+                    "snowfall(mm)",
                 ]
             ]
 
