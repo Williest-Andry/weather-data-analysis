@@ -6,6 +6,7 @@ import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from scripts.extract_weather import extract_city_weather
 from scripts.merge_weather import merge_weather
+from scripts.transform_star_schema import dataset_to_star_schema
 
 CITIES = ["paris", "tokyo", "barcelone", "montréal", "marrakesh"]
 
@@ -33,9 +34,14 @@ with DAG(
     ]
 
     merge_task = PythonOperator(
-        task_id=f"merge_weather",
+        task_id="merge_weather",
         python_callable=merge_weather,
         op_args=["{{ds}}"]
     )
 
-    extract_tasks >> merge_task
+    transform_star_schema = PythonOperator(
+        task_id="transform_star_schema",
+        python_callable=dataset_to_star_schema
+    )
+
+    extract_tasks >> merge_task >> transform_star_schema

@@ -7,7 +7,7 @@ import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from scripts.convert_date import to_local_hour
 from scripts.convert_date import timezone_to_hour
-
+from scripts.scoring import calculate_score
 
 def merge_weather(date):
     global_weather_dir = f"data/global_processed/global_weather.csv"
@@ -17,7 +17,6 @@ def merge_weather(date):
         global_df = pd.read_csv(global_weather_dir)
     else:
         global_df = pd.DataFrame()
-    global_df.rename(columns={"timezone": "timezone_hour"}, inplace=True)
 
     new_data = []
     daily_raw_dir = f"data/daily_raw/{date}"
@@ -72,6 +71,11 @@ def merge_weather(date):
                     "snowfall(mm)",
                 ]
             ]
+            
+            file_df["daily_score(/10)"] = file_df.apply(
+                lambda row: calculate_score(row),
+                axis=1
+            )
 
             new_data.append(file_df)
 

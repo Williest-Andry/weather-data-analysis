@@ -1,0 +1,2 @@
+city_id,city,extract_date,temperature,humidity,wind,description,sunrise,sunset,timezone,snow,rain,cloud
+1850144,tokyo,2025-06-30,32.58,53,5.14,broken clouds,1751225300,1751277663,32400,0,0,75
