@@ -1,0 +1,2 @@
+city_id,city,extract_date,temperature,humidity,wind,description,sunrise,sunset,timezone,snow,rain,cloud
+6077243,montréal,2025-07-03,20.67,81,4.63,overcast clouds,1751533842,1751589973,-14400,0,0,100

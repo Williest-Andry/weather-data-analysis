@@ -1,0 +1,2 @@
+city_id,city,extract_date,temperature,humidity,wind,description,sunrise,sunset,timezone,snow,rain,cloud
+3128760,barcelone,2025-07-02,30.35,63,4.63,few clouds,1751430124,1751484507,7200,0,0,20

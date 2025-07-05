@@ -6,6 +6,7 @@ from datetime import datetime
 
 def extract_city_weather(city, date, api_key):
     try:
+        # API request Configuration 
         API_URL = "https://api.openweathermap.org/data/2.5/weather"
         params = {
             "q": city,
@@ -15,8 +16,8 @@ def extract_city_weather(city, date, api_key):
         response = requests.get(API_URL, params=params)
         response.raise_for_status()
 
+        # Extract necessary data
         data = response.json()
-
         actual_date = datetime.strptime(str(date), "%Y-%m-%d")
         weather_data = {
             "city_id": data["id"],
@@ -34,12 +35,16 @@ def extract_city_weather(city, date, api_key):
             "cloud": data["clouds"]["all"],
         }
 
+        # Create output directory if not exist
         raw_data_dir = f"data/daily_raw/{actual_date.date()}/"
         os.makedirs(os.path.dirname(raw_data_dir), exist_ok=True)
 
+        # Save date into CSV file
         pd.DataFrame([weather_data]).to_csv(
             f"{raw_data_dir}/weather_{city}.csv", index=False
         )
+
+    # Error handling
     except requests.exceptions.RequestException as e:
         logging.error(f"API REQUEST ERROR: {e}")
     except Exception as e:

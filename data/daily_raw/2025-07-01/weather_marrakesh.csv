@@ -1,0 +1,2 @@
+city_id,city,extract_date,temperature,humidity,wind,description,sunrise,sunset,timezone,snow,rain,cloud
+2542997,marrakesh,2025-07-01,37.04,32,2.57,scattered clouds,1751347826,1751398865,3600,0,0,40
