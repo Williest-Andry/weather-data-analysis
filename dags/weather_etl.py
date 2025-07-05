@@ -9,7 +9,7 @@ from scripts.merge_weather import merge_weather
 from scripts.transform_star_schema import dataset_to_star_schema
 
 # Cities list 
-CITIES = ["paris", "tokyo", "barcelone", "montréal", "marrakesh"]
+CITIES = ["paris", "tokyo", "barcelone", "montréal", "marrakech"]
 
 # DAG default config
 default_args = {
